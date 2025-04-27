@@ -20,5 +20,25 @@ namespace kursach
         {
             InitializeComponent();
         }
+        private void LoadHolidays()
+        {
+            List<string> holidays = new List<string>
+            {
+                "1 января — Новый год",
+                "7 января — Рождество Христово",
+                "23 февраля — День защитника Отечества",
+                "8 марта — Международный женский день",
+                "1 мая — Праздник Весны и Труда",
+                "9 мая — День Победы"
+            };
+
+            HolidaysListBox.ItemsSource = holidays;
+        }
+
+        private void NavigateButton_Click(object sender, RoutedEventArgs e)
+        {
+             Clients clients = new Clients();
+            clients.Show();
+        }
     }
 }

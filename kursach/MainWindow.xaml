@@ -9,21 +9,26 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <Label Content="Fiesta Viva" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="30"/>
-        <Label Content="Ближайшие праздники" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" FontSize="25"/>
-        <StackPanel Grid.Row="1" Grid.RowSpan="2" Grid.Column="1">
-            
-        </StackPanel>
-        <Button Content="Добавить клиента" Grid.Row="2" />
+
+        <TextBlock Text="Ивент-Агентство" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="10"/>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Margin="10">
+                <Button Content="Добавить клиента" Width="150" Height="30" Click="NavigateButton_Click"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Margin="10">
+                <TextBlock Text="Ближайшие праздники" FontSize="16" FontWeight="SemiBold" Margin="0,0,0,10"/>
+                <ListBox x:Name="HolidaysListBox"/>
+            </StackPanel>
+        </Grid>
 
     </Grid>
 </Window>
