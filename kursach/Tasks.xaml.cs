@@ -15,18 +15,18 @@ using System.Windows.Shapes;
 namespace kursach
 {
     /// <summary>
-    /// Логика взаимодействия для Events.xaml
+    /// Логика взаимодействия для Tasks.xaml
     /// </summary>
-    public partial class Events : Window
+    public partial class Tasks : Window
     {
-        public Events()
+        public Tasks()
         {
             InitializeComponent();
         }
         private void GoToNextPage_Click(object sender, RoutedEventArgs e)
         {
-            Tasks tasks = new Tasks();
-            tasks.Show();
+            Contractor contractor = new Contractor();
+            contractor.Show();
         }
     }
 }

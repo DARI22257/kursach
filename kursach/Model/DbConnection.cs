@@ -20,7 +20,7 @@ namespace kursach.Model
             sb.UserID = "student";
             sb.Password = "student";
             sb.Server = "192.168.200.13";
-            sb.Database = "1125_new_2025";
+            sb.Database = "1125_eventagency";
             sb.CharacterSet = "utf8mb4";
 
             // инициализация объекта для подключения к субд

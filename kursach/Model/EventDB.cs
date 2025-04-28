@@ -1,24 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using MySqlConnector;
+using System.Windows;
 
 namespace kursach.Model
 {
-    internal class ClientDB
+    internal class EventDB
     {
         DbConnection connection;
 
-        private ClientDB(DbConnection db)
+        private EventDB(DbConnection db)
         {
             this.connection = db;
         }
 
-        public bool Insert(Client client)
+        public bool Insert(Event event)
         {
             bool result = false;
             if (connection == null)
