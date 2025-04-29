@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using kursach.VM;
 
 namespace kursach
 {
@@ -22,16 +23,8 @@ namespace kursach
         public Clients()
         {
             InitializeComponent();
-        }
-        private void AddClient_Click(object sender, RoutedEventArgs e)
-        {
-            
+            ((ClientsMvvm)this.DataContext).SetClose(Close);
         }
 
-        private void GoToNextPage_Click(object sender, RoutedEventArgs e)
-        {
-            Events events = new Events();
-            events.Show();
-        }
     }
 }

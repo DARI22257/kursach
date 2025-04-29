@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Buffers.Text;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -9,52 +8,52 @@ using kursach.Model;
 
 namespace kursach.VM
 {
-    internal class ClientsMvvm : BaseVM
+    internal class EventsMvvm : BaseVM
     {
-        private Client newClient = new();
+        private Event newEvent = new();
 
-        public Client NewClient
+        public Event NewEvent
         {
-            get => newClient;
+            get => newEvent;
             set
             {
-                newClient = value;
+                newEvent = value;
                 Signal();
             }
         }
 
-        private Client selectedClient = new();
+        private Event selectedEvent = new();
 
-        public Client SelectedClient
+        public Event SelectedEvent
         {
-            get => selectedClient;
+            get => selectedEvent;
             set
             {
-                selectedClient = value;
+                selectedEvent = value;
                 Signal();
             }
         }
 
-        private ObservableCollection<Client> clients = new();
+        private ObservableCollection<Event> events = new();
 
-        public ObservableCollection<Client> Clients
+        public ObservableCollection<Event> Events
         {
-            get => clients;
+            get => events;
             set
             {
-                clients = value;
+                events = value;
                 Signal();
             }
         }
 
 
-        public CommandMvvm InsertClient { get; set; }
+        public CommandMvvm InsertEvent { get; set; }
 
         public CommandMvvm NextPage { get; set; }
-        public ClientsMvvm()
+        public EventsMvvm()
         {
             SelectAll();
-            InsertClient = new CommandMvvm(() =>
+            InsertEvent = new CommandMvvm(() =>
             {
                 ClientDB.GetDb().Insert(NewClient);
                 NewClient = new();

@@ -41,7 +41,7 @@
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
-            <Button Content="Далее" Width="100" Height="40" Click="GoToNextPage_Click" />
+            <Button Content="Далее" Width="100" Height="40" />
         </StackPanel>
     </Grid>
 </Window>

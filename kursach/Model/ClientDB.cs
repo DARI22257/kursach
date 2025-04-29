@@ -41,7 +41,7 @@ namespace kursach.Model
                     int id = (int)(ulong)cmd.ExecuteScalar();
                     if (id > 0)
                     {
-                        MessageBox.Show(id.ToString());
+                        //MessageBox.Show(id.ToString());
                         // назначаем полученный id обратно в объект для дальнейшей работы
                         client.ID = id;
                         result = true;
@@ -68,7 +68,7 @@ namespace kursach.Model
 
             if (connection.OpenConnection())
             {
-                var command = connection.CreateCommand("select `id`, `FullName`, `Phone`, `Email`, `Notes` from `Clients` ");
+                var command = connection.CreateCommand("select `id`, `fullName`, `phone`, `email`, `notes` from `Clients` ");
                 try
                 {
                     // выполнение запроса, который возвращает результат-таблицу

@@ -4,8 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:kursach"
+        xmlns:mvvm="clr-namespace:kursach.VM"
+        DataContext="{DynamicResource vm}"
         mc:Ignorable="d"
         Title="Clients" Height="450" Width="800">
+    <Window.Resources>
+        <mvvm:ClientsMvvm x:Key="vm"/>
+    </Window.Resources>
     <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
@@ -16,27 +21,40 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="0" Margin="10">
+        <StackPanel Grid.Column="0" Margin="10" DataContext="{Binding NewClient}">
             <Label Content="ФИО"/>
-            <TextBox />
+            <TextBox Text="{Binding FullName}"/>
             <Label Content="Номер телефона"/>
-            <TextBox />
+            <TextBox Text="{Binding Phone}"/>
             <Label Content="Email"/>
-            <TextBox />
+            <TextBox Text="{Binding Email}"/>
             <Label Content="Заметки"/>
-            <TextBox />
+            <TextBox Text="{Binding Notes}"/>
         </StackPanel>
 
-        <StackPanel Grid.Column="1" Margin="10">
-            <TextBlock  Text="Информация о клиенте" HorizontalAlignment="Center" />
-        </StackPanel>
+        
+        <ListView Grid.Column="1" ItemsSource="{Binding Clients}" SelectedItem="{Binding SelectedClient}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ФИО" DisplayMemberBinding="{Binding FullName}" Width="100"/>
+                    <GridViewColumn Header="Номер телефона" DisplayMemberBinding="{Binding Phone}" Width="100"/>
+                    <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}" Width="100"/>
+                    <GridViewColumn Header="Заметки" DisplayMemberBinding="{Binding Notes}"/>
+                </GridView>
+            </ListView.View>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="kjk"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
 
         <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom" Margin="10">
             <Button Content="Добавить клиента" Command="{Binding InsertClient}" Width="150" Height="40" />
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
-            <Button Content="Далее" Width="100" Height="40" Click="GoToNextPage_Click" />
+            <Button Content="Далее" Width="100" Height="40" Command="{Binding NextPage}" />
         </StackPanel>
     </Grid>
 </Window>

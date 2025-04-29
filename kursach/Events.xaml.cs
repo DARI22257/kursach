@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using kursach.VM;
 
 namespace kursach
 {
@@ -19,9 +20,11 @@ namespace kursach
     /// </summary>
     public partial class Events : Window
     {
-        public Events()
+        public Events(Model.Client selectedClient)
         {
             InitializeComponent();
+            ((EventsMvvm)this.DataContext).SetClose(Close);
+            ((EventsMvvm)this.DataContext).SetClient(selectedClient);
         }
         private void GoToNextPage_Click(object sender, RoutedEventArgs e)
         {
