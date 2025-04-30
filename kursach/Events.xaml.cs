@@ -23,8 +23,8 @@ namespace kursach
         public Events(Model.Client selectedClient)
         {
             InitializeComponent();
-            //((EventsMvvm)this.DataContext).SetClose(Close);
-            //((EventsMvvm)this.DataContext).SetClient(selectedClient);
+            ((EventsMvvm)this.DataContext).SetClose(Close);
+            ((EventsMvvm)this.DataContext).SetClient(selectedClient);
         }
         private void GoToNextPage_Click(object sender, RoutedEventArgs e)
         {
