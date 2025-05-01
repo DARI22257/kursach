@@ -11,22 +11,23 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using kursach.Model;
+using kursach.VM;
 
 namespace kursach
 {
     /// <summary>
     /// Логика взаимодействия для Tasks.xaml
     /// </summary>
-    public partial class Tasks : Window
+    public partial class Task : Window
     {
-        public Tasks()
+        public Task()
         {
             InitializeComponent();
+            ((TasksMvvm)this.DataContext).SetClose(Close);
+            //((EventsMvvm)this.DataContext).SetClient(selectedClient);
         }
-        private void GoToNextPage_Click(object sender, RoutedEventArgs e)
-        {
-            Contractor contractor = new Contractor();
-            contractor.Show();
-        }
+
+
     }
 }

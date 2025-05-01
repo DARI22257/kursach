@@ -61,22 +61,23 @@ namespace kursach.VM
             },
                 () =>
                 !string.IsNullOrEmpty(newEvent.Title) &&
-                DateOnly.MinValue!=newEvent.Date &&
+                DateOnly.MinValue != newEvent.Date &&
                 !string.IsNullOrEmpty(newEvent.Place) &&
-                !int(newEvent.Budget));
+                newEvent.Budget != 0 &&
+                !string.IsNullOrEmpty(newEvent.Status));
 
             NextPage = new CommandMvvm(() =>
             {
-                Events events = new Events(SelectedClient);
+                Events events = new Events(SelectedEvent);
                 events.Show();
                 close?.Invoke();
             },
-                () => SelectedClient != null);
+                () => SelectedEvent != null);
         }
 
         private void SelectAll()
         {
-            Clients = new ObservableCollection<Client>(ClientDB.GetDb().SelectAll());
+            Events = new ObservableCollection<Event>(EventDB.GetDb().SelectAll());
         }
         Action close;
         internal void SetClose(Action close)

@@ -14,34 +14,34 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" />
-            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="0" Margin="10">
+        <StackPanel Grid.Column="0" Margin="10" DataContext="{Binding NewEvent}">
             <Label Content="Название"/>
-            <TextBox />
+            <TextBox Text="{Binding Title}"/>
             <Label Content="Дата проведения"/>
-            <TextBox />
+            <DataGrid Height="20" ItemsSource="{Binding Date}"/>
             <Label Content="Место проведения"/>
-            <TextBox />
+            <TextBox Text="{Binding Place}"/>
             <Label Content="Бюджет"/>
-            <TextBox />
+            <TextBox Text="{Binding Budget}"/>
             <Label Content="Статус"/>
-            <TextBox />
+            <TextBox Text="{Binding Status}"/>
         </StackPanel>
 
         <ListView Grid.Column="1" ItemsSource="{Binding Events}" SelectedItem="{Binding SelectedEvent}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Title}" />
-                    <GridViewColumn Header="Дата проведения" DisplayMemberBinding="{Binding Date}" />
-                    <GridViewColumn Header="Место проведения" DisplayMemberBinding="{Binding Place}" />
-                    <GridViewColumn Header="Бюджет" DisplayMemberBinding="{Binding Budget}"/>
-                    <GridViewColumn Header="Статус" DisplayMemberBinding="{Binding Status}"/>
+                    <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Title}" Width="80"/>
+                    <GridViewColumn Header="Дата проведения" DisplayMemberBinding="{Binding Date}" Width="120"/>
+                    <GridViewColumn Header="Место проведения" DisplayMemberBinding="{Binding Place}" Width="120"/>
+                    <GridViewColumn Header="Бюджет" DisplayMemberBinding="{Binding Budget}" Width="80"/>
+                    <GridViewColumn Header="Статус" DisplayMemberBinding="{Binding Status}" Width="80"/>
                 </GridView>
             </ListView.View>
             <ListView.ContextMenu>

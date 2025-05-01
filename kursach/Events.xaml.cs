@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using kursach.Model;
 using kursach.VM;
 
 namespace kursach
@@ -24,11 +25,19 @@ namespace kursach
         {
             InitializeComponent();
             ((EventsMvvm)this.DataContext).SetClose(Close);
-            ((EventsMvvm)this.DataContext).SetClient(selectedClient);
+            //((EventsMvvm)this.DataContext).SetClient(selectedClient);
         }
+
+        public Events(Event selectedEvent)
+        {
+            SelectedEvent = selectedEvent;
+        }
+
+        public Event SelectedEvent { get; }
+
         private void GoToNextPage_Click(object sender, RoutedEventArgs e)
         {
-            Tasks tasks = new Tasks();
+            Task tasks = new Task();
             tasks.Show();
         }
     }
